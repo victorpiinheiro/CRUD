@@ -9,10 +9,24 @@ botaoAdicionaTarefa.addEventListener('click', (e) => {
     criaDiv();
     clearInput();
     delTask();
-    editTask();
-   
-    
 });
+
+divGeral.addEventListener('click', (e) => {
+    const el = e.target;
+    if (el.classList.contains('edit-name')) {
+        const novaTarefa = prompt('Nova tarefa:');
+        const tarefa = el.parentElement;
+       tarefa.firstChild.nodeValue = novaTarefa;
+       return;
+    } else if (el.classList.contains ('edit-owner')) {
+        const responsavel = el.parentElement;
+        const novoResponsavel = prompt('Digite o responsavel:');
+        responsavel.firstChild.nodeValue = novoResponsavel;
+        return;
+    }
+});
+
+
 
 function criaDiv() {
     const taskItem = document.createElement('div')
@@ -60,23 +74,6 @@ function delTask() {
             return;
         }
     });
-}
-
-function editTask() {
-    divGeral.addEventListener('click', (e) => {
-        const el = e.target;
-        if (el.classList.contains('edit-name')) {
-            const novaTarefa = prompt('Nova tarefa:');
-            const tarefa = el.parentElement;
-           tarefa.firstChild.nodeValue = novaTarefa;
-           return;
-        } else if (el.classList.contains ('edit-owner')) {
-            const responsavel = el.parentElement;
-            const novoResponsavel = prompt('Digite o responsavel:');
-            responsavel.firstChild.nodeValue = novoResponsavel;
-            return;
-        }
-    })
 }
 
 function clearInput() {
